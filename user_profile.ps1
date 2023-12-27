@@ -11,19 +11,6 @@ function prompt
     return $out
 }
 
-# # Bash touch function
-# function touch([string]$filetotouch)
-# {
-#     if(test-path $filetotouch)
-#     {
-#         Set-ItemProperty -Path $filetotouch -Name LastWriteTime -Value (get-date)
-#         # “File $filetotouch timestamp succesfully updated”
-#     } else
-#     {
-#         Set-Content -Path ($filetotouch) -Value ($null);
-#         # “File $filetotouch succesfully created”
-#     }
-# }
 
 Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord DownArrow -Function HistorySearchForward
@@ -63,10 +50,10 @@ function ffd()
     fd -d 1 -t d -u . $dev | fzf | cd
 }
 
-function hdir([string]$new_dir)
+function hdir([Parameter(Mandatory=$true)][string]$dirname)
 {
-    mkdir $new_dir;
-    cd $new_dir;
+    mkdir $dirname;
+    cd $dirname;
 }
 
 # Git pull nvim config
